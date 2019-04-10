@@ -1,5 +1,6 @@
 package DataBase;
 
+import java.awt.Color;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.DriverManager;
@@ -32,7 +33,7 @@ public void addStudent(String name,String gender,String mobile, Date date, int n
         int studentID=rs.getInt(1)+1;
         rs.close();
         stmt.close();
-        PreparedStatement st=conn.prepareStatement("insert into emp(student_id,student_name,gender,mobile,"
+        PreparedStatement st=conn.prepareStatement("insert into student(student_id,student_name,gender,mobile,"
                 + "birth_date,nationality_id,Department_id) values(?,?,?,?,?,?,?)");
         st.setInt(1,studentID);
         st.setString(2,name);
