@@ -7,6 +7,7 @@ package RegestraionApp;
 
 import DataBase.DBase;
 import java.sql.Connection;
+import java.sql.Date;
 import java.util.ArrayList;
 
 /**
@@ -36,6 +37,16 @@ public class MainJFrame extends javax.swing.JFrame {
     private void initComponents() {
 
         jSeparator1 = new javax.swing.JSeparator();
+        jPanel = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
+        jAddNationalityPanel = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jNationalityNameTextField = new javax.swing.JTextField();
+        jNationalityAbbTextField = new javax.swing.JTextField();
+        jAddNationalityButton = new javax.swing.JButton();
+        jClearNationalityButton = new javax.swing.JButton();
         jAddStudentPanel = new javax.swing.JPanel();
         jTextFieldMName = new javax.swing.JTextField();
         jTextFieldLName = new javax.swing.JTextField();
@@ -46,22 +57,105 @@ public class MainJFrame extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
-        jTextFieldName1 = new javax.swing.JTextField();
+        jGenderComboBox = new javax.swing.JComboBox();
+        jDateChooser = new com.toedter.calendar.JDateChooser();
+        jMobileTextField = new javax.swing.JTextField();
         jDepartmentComboBox = new javax.swing.JComboBox();
         jNationalityComboBox = new javax.swing.JComboBox();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        jClearButton = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jAddMenu = new javax.swing.JMenu();
         jAddStudentMenuItem = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
         jInsertMenu = new javax.swing.JMenu();
         jUpdateMenu = new javax.swing.JMenu();
         jStudentMenu = new javax.swing.JMenu();
         jViewMenu = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jPanel.setLayout(new java.awt.CardLayout());
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 471, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 307, Short.MAX_VALUE)
+        );
+
+        jPanel.add(jPanel1, "card3");
+
+        jAddNationalityPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Add Nationality"));
+
+        jLabel5.setText("Nationality Name:");
+
+        jLabel8.setText("Nationality Abbriviation:");
+
+        jLabel9.setForeground(new java.awt.Color(204, 0, 0));
+        jLabel9.setText("Max 3 Characters !");
+
+        jAddNationalityButton.setText("Add");
+        jAddNationalityButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jAddNationalityButtonActionPerformed(evt);
+            }
+        });
+
+        jClearNationalityButton.setText("Clear");
+        jClearNationalityButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jClearNationalityButtonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jAddNationalityPanelLayout = new javax.swing.GroupLayout(jAddNationalityPanel);
+        jAddNationalityPanel.setLayout(jAddNationalityPanelLayout);
+        jAddNationalityPanelLayout.setHorizontalGroup(
+            jAddNationalityPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jAddNationalityPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jAddNationalityPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jAddNationalityPanelLayout.createSequentialGroup()
+                        .addGroup(jAddNationalityPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE)
+                            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jAddNationalityPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jAddNationalityPanelLayout.createSequentialGroup()
+                                .addComponent(jClearNationalityButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jAddNationalityButton, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jNationalityNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jNationalityAbbTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(38, Short.MAX_VALUE))
+        );
+        jAddNationalityPanelLayout.setVerticalGroup(
+            jAddNationalityPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jAddNationalityPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jAddNationalityPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jNationalityNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jAddNationalityPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jNationalityAbbTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel9)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jAddNationalityPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jAddNationalityButton)
+                    .addComponent(jClearNationalityButton))
+                .addContainerGap(133, Short.MAX_VALUE))
+        );
+
+        jPanel.add(jAddNationalityPanel, "card4");
 
         jAddStudentPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Add Student"));
 
@@ -99,25 +193,25 @@ public class MainJFrame extends javax.swing.JFrame {
 
         jLabel7.setText("Department:");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "M", "F" }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        jGenderComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "M", "F" }));
+        jGenderComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                jGenderComboBoxActionPerformed(evt);
             }
         });
 
-        jTextFieldName1.setToolTipText("");
-        jTextFieldName1.addMouseListener(new java.awt.event.MouseAdapter() {
+        jMobileTextField.setToolTipText("");
+        jMobileTextField.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTextFieldName1MouseClicked(evt);
+                jMobileTextFieldMouseClicked(evt);
             }
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                jTextFieldName1MousePressed(evt);
+                jMobileTextFieldMousePressed(evt);
             }
         });
-        jTextFieldName1.addActionListener(new java.awt.event.ActionListener() {
+        jMobileTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldName1ActionPerformed(evt);
+                jMobileTextFieldActionPerformed(evt);
             }
         });
 
@@ -134,8 +228,18 @@ public class MainJFrame extends javax.swing.JFrame {
         });
 
         jButton1.setText("Add");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
-        jButton2.setText("Clear");
+        jClearButton.setText("Clear");
+        jClearButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jClearButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jAddStudentPanelLayout = new javax.swing.GroupLayout(jAddStudentPanel);
         jAddStudentPanel.setLayout(jAddStudentPanelLayout);
@@ -151,17 +255,17 @@ public class MainJFrame extends javax.swing.JFrame {
                             .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jAddStudentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jDateChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jDateChooser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jDepartmentComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jNationalityComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(jAddStudentPanelLayout.createSequentialGroup()
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextFieldName1))
+                        .addComponent(jMobileTextField))
                     .addGroup(jAddStudentPanelLayout.createSequentialGroup()
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jGenderComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jAddStudentPanelLayout.createSequentialGroup()
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -171,7 +275,7 @@ public class MainJFrame extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jTextFieldLName, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jAddStudentPanelLayout.createSequentialGroup()
-                        .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jClearButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -188,15 +292,15 @@ public class MainJFrame extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jAddStudentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jGenderComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jAddStudentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4)
-                    .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(9, 9, 9)
                 .addGroup(jAddStudentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jTextFieldName1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jMobileTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jAddStudentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jNationalityComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -208,11 +312,13 @@ public class MainJFrame extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jAddStudentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
-                    .addComponent(jButton2))
-                .addContainerGap(10, Short.MAX_VALUE))
+                    .addComponent(jClearButton))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
         jTextFieldFName.getAccessibleContext().setAccessibleName("qdqd");
+
+        jPanel.add(jAddStudentPanel, "card2");
 
         jAddMenu.setText("Add");
         jAddMenu.addActionListener(new java.awt.event.ActionListener() {
@@ -228,6 +334,14 @@ public class MainJFrame extends javax.swing.JFrame {
             }
         });
         jAddMenu.add(jAddStudentMenuItem);
+
+        jMenuItem1.setText("Add Nationality");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jAddMenu.add(jMenuItem1);
 
         jMenuBar1.add(jAddMenu);
 
@@ -251,14 +365,14 @@ public class MainJFrame extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jAddStudentPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jAddStudentPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -270,21 +384,21 @@ public class MainJFrame extends javax.swing.JFrame {
        jTextFieldFName.setText(null);
     }//GEN-LAST:event_jTextFieldFNameMouseClicked
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    private void jGenderComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jGenderComboBoxActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    }//GEN-LAST:event_jGenderComboBoxActionPerformed
 
-    private void jTextFieldName1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextFieldName1MouseClicked
+    private void jMobileTextFieldMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMobileTextFieldMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldName1MouseClicked
+    }//GEN-LAST:event_jMobileTextFieldMouseClicked
 
-    private void jTextFieldName1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextFieldName1MousePressed
+    private void jMobileTextFieldMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMobileTextFieldMousePressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldName1MousePressed
+    }//GEN-LAST:event_jMobileTextFieldMousePressed
 
-    private void jTextFieldName1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldName1ActionPerformed
+    private void jMobileTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMobileTextFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldName1ActionPerformed
+    }//GEN-LAST:event_jMobileTextFieldActionPerformed
 
     private void jDepartmentComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jDepartmentComboBoxActionPerformed
         // TODO add your handling code here:
@@ -311,14 +425,64 @@ public class MainJFrame extends javax.swing.JFrame {
 
     private void jAddStudentMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAddStudentMenuItemActionPerformed
         // TODO add your handling code here:
+        jPanel1.setVisible(false);
+        jAddNationalityPanel.setVisible(false);
         ArrayList<String> nationalities=db.getNationalityList();
         ArrayList<String> departments=db.getDepartmentList();
         for(int i=0;i<nationalities.size();i++)
         jNationalityComboBox.addItem(nationalities.get(i));
-        for(int i=0;i<nationalities.size();i++)
+        for(int i=0;i<departments.size();i++)
         jDepartmentComboBox.addItem(departments.get(i));
         jAddStudentPanel.setVisible(true);
     }//GEN-LAST:event_jAddStudentMenuItemActionPerformed
+
+    private void jClearButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jClearButtonActionPerformed
+        jTextFieldFName.setText(null);
+        jTextFieldMName.setText(null);
+        jTextFieldLName.setText(null);
+        jDateChooser.setCalendar(null);
+        jMobileTextField.setText(null);
+        
+        
+    }//GEN-LAST:event_jClearButtonActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+         java.sql.Date date =  new java.sql.Date(jDateChooser.getDate().getTime());
+         if(isValidDate(date) && isValidPhone(jMobileTextField.getText()) 
+                 && isValidName(jTextFieldFName.getText())
+                 && isValidName(jTextFieldMName.getText())
+                 && isValidName(jTextFieldLName.getText())
+                 ){
+             db.addStudent(jTextFieldFName.getText()+" "
+                     +jTextFieldMName.getText()+" "
+                     +jTextFieldLName.getText(), jGenderComboBox.getSelectedItem().toString(), jMobileTextField.getText(),
+                     date, db.getDepartmentID(jDepartmentComboBox.getSelectedItem().toString()), 
+                     db.getNationalityID(jNationalityComboBox.getSelectedItem().toString()));
+                     jTextFieldFName.setText(null);
+                
+        jTextFieldMName.setText(null);
+        jTextFieldLName.setText(null);
+        jDateChooser.setCalendar(null);
+        jMobileTextField.setText(null);
+         }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jClearNationalityButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jClearNationalityButtonActionPerformed
+        jNationalityAbbTextField.setText(null);
+        jNationalityNameTextField.setText(null);
+    }//GEN-LAST:event_jClearNationalityButtonActionPerformed
+
+    private void jAddNationalityButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAddNationalityButtonActionPerformed
+        db.addNationality(jNationalityNameTextField.getText(), jNationalityAbbTextField.getText());
+        jNationalityAbbTextField.setText(null);
+        jNationalityNameTextField.setText(null);
+    }//GEN-LAST:event_jAddNationalityButtonActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        jPanel1.setVisible(false);
+        jAddStudentPanel.setVisible(false);
+        jAddNationalityPanel.setVisible(true);
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -355,30 +519,61 @@ public class MainJFrame extends javax.swing.JFrame {
         });
     }
 
+    private boolean isValidName( String name )
+   {
+      return name.matches( "[a-zA-Z]*" );
+   }
+    private boolean isValidPhone(String phone){
+    return phone.matches( "\\d{8}" );
+    }
+    private boolean isValidDate(java.sql.Date date){
+       try
+	    {
+	        date.getDate();
+                return true;
+	    }
+	    /* Date format is invalid */
+	    catch (Exception e)
+            {
+	        return false;
+	    }
+       
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu jAddMenu;
+    private javax.swing.JButton jAddNationalityButton;
+    private javax.swing.JPanel jAddNationalityPanel;
     private javax.swing.JMenuItem jAddStudentMenuItem;
     private javax.swing.JPanel jAddStudentPanel;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JComboBox jComboBox1;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
+    private javax.swing.JButton jClearButton;
+    private javax.swing.JButton jClearNationalityButton;
+    private com.toedter.calendar.JDateChooser jDateChooser;
     private javax.swing.JComboBox jDepartmentComboBox;
+    private javax.swing.JComboBox jGenderComboBox;
     private javax.swing.JMenu jInsertMenu;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JTextField jMobileTextField;
+    private javax.swing.JTextField jNationalityAbbTextField;
     private javax.swing.JComboBox jNationalityComboBox;
+    private javax.swing.JTextField jNationalityNameTextField;
+    private javax.swing.JPanel jPanel;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JMenu jStudentMenu;
     private javax.swing.JTextField jTextFieldFName;
     private javax.swing.JTextField jTextFieldLName;
     private javax.swing.JTextField jTextFieldMName;
-    private javax.swing.JTextField jTextFieldName1;
     private javax.swing.JMenu jUpdateMenu;
     private javax.swing.JMenu jViewMenu;
     // End of variables declaration//GEN-END:variables
