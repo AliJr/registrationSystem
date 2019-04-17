@@ -136,22 +136,44 @@ public class MainJFrame extends javax.swing.JFrame {
         jAddSectionCourseComboBox = new javax.swing.JComboBox();
         jLabel29 = new javax.swing.JLabel();
         jAddSectionRoomComboBox = new javax.swing.JComboBox();
+        jAddMajorPanel = new javax.swing.JPanel();
+        jTextFieldIMajorName = new javax.swing.JTextField();
+        jLabel30 = new javax.swing.JLabel();
+        jLabel31 = new javax.swing.JLabel();
+        jMajorDepartmentComboBox = new javax.swing.JComboBox();
+        jMajorAddButton = new javax.swing.JButton();
+        jMajorClearButton = new javax.swing.JButton();
+        jRegisterCoursePanel = new javax.swing.JPanel();
+        jTextFieldIRCStudentID = new javax.swing.JTextField();
+        jLabel32 = new javax.swing.JLabel();
+        jLabel33 = new javax.swing.JLabel();
+        jRCSemesterComboBox = new javax.swing.JComboBox();
+        jRCAddButton = new javax.swing.JButton();
+        jRCClearButton = new javax.swing.JButton();
+        jLabel34 = new javax.swing.JLabel();
+        jRCCourseComboBox = new javax.swing.JComboBox();
+        jRCSectionComboBox = new javax.swing.JComboBox();
+        jLabel35 = new javax.swing.JLabel();
         jMenuBar = new javax.swing.JMenuBar();
         jAddMenu = new javax.swing.JMenu();
         jAddStudentMenuItem = new javax.swing.JMenuItem();
-        jAddNationalityMenuItem = new javax.swing.JMenuItem();
-        jAddRoomMenuItem = new javax.swing.JMenuItem();
-        jSeparator2 = new javax.swing.JPopupMenu.Separator();
-        jAddCollegeMenuItem = new javax.swing.JMenuItem();
-        jSemesterMenuItem = new javax.swing.JMenuItem();
         jInstructorMenuItem = new javax.swing.JMenuItem();
+        jSeparator2 = new javax.swing.JPopupMenu.Separator();
+        jAddRoomMenuItem = new javax.swing.JMenuItem();
+        jSemesterMenuItem = new javax.swing.JMenuItem();
+        jAddNationalityMenuItem = new javax.swing.JMenuItem();
+        jSeparator3 = new javax.swing.JPopupMenu.Separator();
+        jAddCollegeMenuItem = new javax.swing.JMenuItem();
         jAddDepartmentMenuItem = new javax.swing.JMenuItem();
+        jAddMajorMenuItem = new javax.swing.JMenuItem();
+        jSeparator4 = new javax.swing.JPopupMenu.Separator();
         jAddCourseMenuItem = new javax.swing.JMenuItem();
         jAddPrerequisiteMenuItem = new javax.swing.JMenuItem();
         jAddSectionMenuItem = new javax.swing.JMenuItem();
+        jStudentMenu = new javax.swing.JMenu();
+        jRegisterCourseMenuItem = new javax.swing.JMenuItem();
         jInsertMenu = new javax.swing.JMenu();
         jUpdateMenu = new javax.swing.JMenu();
-        jStudentMenu = new javax.swing.JMenu();
         jViewMenu = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -1045,6 +1067,202 @@ public class MainJFrame extends javax.swing.JFrame {
 
         jPanel.add(jAddSectionPanel, "card2");
 
+        jAddMajorPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Add Major"));
+
+        jTextFieldIMajorName.setToolTipText("");
+        jTextFieldIMajorName.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTextFieldIMajorNameMouseClicked(evt);
+            }
+        });
+
+        jLabel30.setText("Name:");
+
+        jLabel31.setText("Department:");
+
+        jMajorDepartmentComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMajorDepartmentComboBoxActionPerformed(evt);
+            }
+        });
+
+        jMajorAddButton.setText("Add");
+        jMajorAddButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMajorAddButtonActionPerformed(evt);
+            }
+        });
+
+        jMajorClearButton.setText("Clear");
+        jMajorClearButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMajorClearButtonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jAddMajorPanelLayout = new javax.swing.GroupLayout(jAddMajorPanel);
+        jAddMajorPanel.setLayout(jAddMajorPanelLayout);
+        jAddMajorPanelLayout.setHorizontalGroup(
+            jAddMajorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jAddMajorPanelLayout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addGroup(jAddMajorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jAddMajorPanelLayout.createSequentialGroup()
+                        .addComponent(jLabel31, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jMajorDepartmentComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jAddMajorPanelLayout.createSequentialGroup()
+                        .addComponent(jLabel30, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextFieldIMajorName))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jAddMajorPanelLayout.createSequentialGroup()
+                        .addComponent(jMajorClearButton, javax.swing.GroupLayout.DEFAULT_SIZE, 208, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jMajorAddButton, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(32, Short.MAX_VALUE))
+        );
+        jAddMajorPanelLayout.setVerticalGroup(
+            jAddMajorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jAddMajorPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jAddMajorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextFieldIMajorName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel30))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jAddMajorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel31)
+                    .addComponent(jMajorDepartmentComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jAddMajorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jMajorAddButton)
+                    .addComponent(jMajorClearButton))
+                .addContainerGap(185, Short.MAX_VALUE))
+        );
+
+        jPanel.add(jAddMajorPanel, "card2");
+
+        jRegisterCoursePanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Register Course"));
+
+        jTextFieldIRCStudentID.setToolTipText("");
+        jTextFieldIRCStudentID.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTextFieldIRCStudentIDMouseClicked(evt);
+            }
+        });
+
+        jLabel32.setText("Student ID:");
+
+        jLabel33.setText("Semester:");
+
+        jRCSemesterComboBox.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jRCSemesterComboBoxItemStateChanged(evt);
+            }
+        });
+        jRCSemesterComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRCSemesterComboBoxActionPerformed(evt);
+            }
+        });
+
+        jRCAddButton.setText("Add");
+        jRCAddButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRCAddButtonActionPerformed(evt);
+            }
+        });
+
+        jRCClearButton.setText("Clear");
+        jRCClearButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRCClearButtonActionPerformed(evt);
+            }
+        });
+
+        jLabel34.setText("Course:");
+
+        jRCCourseComboBox.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jRCCourseComboBoxItemStateChanged(evt);
+            }
+        });
+        jRCCourseComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRCCourseComboBoxActionPerformed(evt);
+            }
+        });
+
+        jRCSectionComboBox.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jRCSectionComboBoxItemStateChanged(evt);
+            }
+        });
+        jRCSectionComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRCSectionComboBoxActionPerformed(evt);
+            }
+        });
+
+        jLabel35.setText("Section:");
+
+        javax.swing.GroupLayout jRegisterCoursePanelLayout = new javax.swing.GroupLayout(jRegisterCoursePanel);
+        jRegisterCoursePanel.setLayout(jRegisterCoursePanelLayout);
+        jRegisterCoursePanelLayout.setHorizontalGroup(
+            jRegisterCoursePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jRegisterCoursePanelLayout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addGroup(jRegisterCoursePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jRegisterCoursePanelLayout.createSequentialGroup()
+                        .addComponent(jRCClearButton, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jRCAddButton, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jRegisterCoursePanelLayout.createSequentialGroup()
+                        .addComponent(jLabel35, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jRCSectionComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jRegisterCoursePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(jRegisterCoursePanelLayout.createSequentialGroup()
+                            .addComponent(jLabel34, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jRCCourseComboBox, 0, 312, Short.MAX_VALUE))
+                        .addGroup(jRegisterCoursePanelLayout.createSequentialGroup()
+                            .addComponent(jLabel32, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jTextFieldIRCStudentID))
+                        .addGroup(jRegisterCoursePanelLayout.createSequentialGroup()
+                            .addComponent(jLabel33, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jRCSemesterComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap(32, Short.MAX_VALUE))
+        );
+        jRegisterCoursePanelLayout.setVerticalGroup(
+            jRegisterCoursePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jRegisterCoursePanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jRegisterCoursePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextFieldIRCStudentID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel32))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jRegisterCoursePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel33)
+                    .addComponent(jRCSemesterComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jRegisterCoursePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel34)
+                    .addComponent(jRCCourseComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jRegisterCoursePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel35)
+                    .addComponent(jRCSectionComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jRegisterCoursePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jRCAddButton)
+                    .addComponent(jRCClearButton))
+                .addContainerGap(114, Short.MAX_VALUE))
+        );
+
+        jPanel.add(jRegisterCoursePanel, "card2");
+
         jAddMenu.setText("Add");
         jAddMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1060,13 +1278,14 @@ public class MainJFrame extends javax.swing.JFrame {
         });
         jAddMenu.add(jAddStudentMenuItem);
 
-        jAddNationalityMenuItem.setText("Add Nationality");
-        jAddNationalityMenuItem.addActionListener(new java.awt.event.ActionListener() {
+        jInstructorMenuItem.setText("Add Instructor");
+        jInstructorMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jAddNationalityMenuItemActionPerformed(evt);
+                jInstructorMenuItemActionPerformed(evt);
             }
         });
-        jAddMenu.add(jAddNationalityMenuItem);
+        jAddMenu.add(jInstructorMenuItem);
+        jAddMenu.add(jSeparator2);
 
         jAddRoomMenuItem.setText("Add Room");
         jAddRoomMenuItem.addActionListener(new java.awt.event.ActionListener() {
@@ -1075,15 +1294,6 @@ public class MainJFrame extends javax.swing.JFrame {
             }
         });
         jAddMenu.add(jAddRoomMenuItem);
-        jAddMenu.add(jSeparator2);
-
-        jAddCollegeMenuItem.setText("Add College");
-        jAddCollegeMenuItem.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jAddCollegeMenuItemActionPerformed(evt);
-            }
-        });
-        jAddMenu.add(jAddCollegeMenuItem);
 
         jSemesterMenuItem.setText("Add Semester");
         jSemesterMenuItem.addActionListener(new java.awt.event.ActionListener() {
@@ -1093,13 +1303,22 @@ public class MainJFrame extends javax.swing.JFrame {
         });
         jAddMenu.add(jSemesterMenuItem);
 
-        jInstructorMenuItem.setText("Add Instructor");
-        jInstructorMenuItem.addActionListener(new java.awt.event.ActionListener() {
+        jAddNationalityMenuItem.setText("Add Nationality");
+        jAddNationalityMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jInstructorMenuItemActionPerformed(evt);
+                jAddNationalityMenuItemActionPerformed(evt);
             }
         });
-        jAddMenu.add(jInstructorMenuItem);
+        jAddMenu.add(jAddNationalityMenuItem);
+        jAddMenu.add(jSeparator3);
+
+        jAddCollegeMenuItem.setText("Add College");
+        jAddCollegeMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jAddCollegeMenuItemActionPerformed(evt);
+            }
+        });
+        jAddMenu.add(jAddCollegeMenuItem);
 
         jAddDepartmentMenuItem.setText("Add Department");
         jAddDepartmentMenuItem.addActionListener(new java.awt.event.ActionListener() {
@@ -1108,6 +1327,15 @@ public class MainJFrame extends javax.swing.JFrame {
             }
         });
         jAddMenu.add(jAddDepartmentMenuItem);
+
+        jAddMajorMenuItem.setText("Add Major");
+        jAddMajorMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jAddMajorMenuItemActionPerformed(evt);
+            }
+        });
+        jAddMenu.add(jAddMajorMenuItem);
+        jAddMenu.add(jSeparator4);
 
         jAddCourseMenuItem.setText("Add Course");
         jAddCourseMenuItem.addActionListener(new java.awt.event.ActionListener() {
@@ -1135,14 +1363,23 @@ public class MainJFrame extends javax.swing.JFrame {
 
         jMenuBar.add(jAddMenu);
 
+        jStudentMenu.setText("Student");
+
+        jRegisterCourseMenuItem.setText("Register Course");
+        jRegisterCourseMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRegisterCourseMenuItemActionPerformed(evt);
+            }
+        });
+        jStudentMenu.add(jRegisterCourseMenuItem);
+
+        jMenuBar.add(jStudentMenu);
+
         jInsertMenu.setText("Insert");
         jMenuBar.add(jInsertMenu);
 
         jUpdateMenu.setText("Update");
         jMenuBar.add(jUpdateMenu);
-
-        jStudentMenu.setText("Student");
-        jMenuBar.add(jStudentMenu);
 
         jViewMenu.setText("View");
         jMenuBar.add(jViewMenu);
@@ -1496,7 +1733,7 @@ public class MainJFrame extends javax.swing.JFrame {
         String time = jStartTimeHComboBox.getSelectedItem().toString() + ":" + jStartTimeMComboBox.getSelectedItem().toString() + "/"
                 + jEndTimeHComboBox.getSelectedItem().toString() + ":" + jEndTimeMComboBox.getSelectedItem().toString() + "/"
                 + jDayComboBox.getSelectedItem().toString();
-        if (db.checkRoomCapacity(Integer.parseInt(jAddSectionCapacityTextField.getText()), 
+        if (db.checkRoomCapacity(Integer.parseInt(jAddSectionCapacityTextField.getText()),
                 Integer.parseInt(jAddSectionRoomComboBox.getSelectedItem().toString()))
                 && db.checkTimeConflict(time,
                         Integer.parseInt(jAddSectionRoomComboBox.getSelectedItem().toString()))) {
@@ -1554,6 +1791,106 @@ public class MainJFrame extends javax.swing.JFrame {
     private void jAddMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAddMenuActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jAddMenuActionPerformed
+
+    private void jTextFieldIMajorNameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextFieldIMajorNameMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldIMajorNameMouseClicked
+
+    private void jMajorDepartmentComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMajorDepartmentComboBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMajorDepartmentComboBoxActionPerformed
+
+    private void jMajorAddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMajorAddButtonActionPerformed
+        db.addMajor(jTextFieldIMajorName.getText(), db.getDepartmentID(jMajorDepartmentComboBox.getSelectedItem().toString()));
+        jTextFieldIMajorName.setText(null);
+        jMajorDepartmentComboBox.setSelectedIndex(-1);
+    }//GEN-LAST:event_jMajorAddButtonActionPerformed
+
+    private void jMajorClearButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMajorClearButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMajorClearButtonActionPerformed
+
+    private void jAddMajorMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAddMajorMenuItemActionPerformed
+        jPanel.setVisible(true);
+        jPanel.removeAll();
+        jPanel.add(jAddMajorPanel);
+        jPanel.repaint();
+        jPanel.revalidate();
+        if (jMajorDepartmentComboBox.getItemCount() == 0) {
+            ArrayList<String> departments = db.getDepartmentList();
+            for (int i = 0; i < departments.size(); i++) {
+                jMajorDepartmentComboBox.addItem(departments.get(i));
+            }
+        }
+    }//GEN-LAST:event_jAddMajorMenuItemActionPerformed
+
+    private void jRegisterCourseMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRegisterCourseMenuItemActionPerformed
+        // TODO add your handling code here:
+
+        jRCSemesterComboBox.removeAllItems();
+        jPanel.setVisible(true);
+        jPanel.removeAll();
+        jPanel.add(jRegisterCoursePanel);
+        jPanel.repaint();
+        jPanel.revalidate();
+        ArrayList<String> semesters = db.getSemesterList();
+        for (int i = 0; i < semesters.size(); i++) {
+            jRCSemesterComboBox.addItem(semesters.get(i));
+        }
+    }//GEN-LAST:event_jRegisterCourseMenuItemActionPerformed
+
+    private void jTextFieldIRCStudentIDMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextFieldIRCStudentIDMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldIRCStudentIDMouseClicked
+
+    private void jRCSemesterComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRCSemesterComboBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jRCSemesterComboBoxActionPerformed
+
+    private void jRCAddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRCAddButtonActionPerformed
+     if(db.canRegister(db.getCourseID(jRCCourseComboBox.getSelectedItem().toString())))
+         if(db.canAttend(db.getSectionID(jRCSectionComboBox.getSelectedItem().toString(), db.getCourseID(jRCCourseComboBox.getSelectedItem().toString()))))
+             if(db.hasNoConflict(jRCSectionComboBox.getSelectedItem().toString(), Integer.parseInt(jTextFieldIRCStudentID.getText()))){
+                db.addStudentRecord(db.getCourseID(jRCCourseComboBox.getSelectedItem().toString()), Integer.parseInt(jTextFieldIRCStudentID.getText()));
+                db.addEnrolls(db.getSectionID(jRCSectionComboBox.getSelectedItem().toString(), db.getCourseID(jRCCourseComboBox.getSelectedItem().toString())), Integer.parseInt(jTextFieldIRCStudentID.getText()));
+                jTextFieldIRCStudentID.setText(null);
+                jRCSemesterComboBox.setSelectedIndex(-1);
+                jRCCourseComboBox.setSelectedIndex(-1);
+                jRCSectionComboBox.setSelectedIndex(-1);
+             }
+    }//GEN-LAST:event_jRCAddButtonActionPerformed
+
+    private void jRCClearButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRCClearButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jRCClearButtonActionPerformed
+
+    private void jRCCourseComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRCCourseComboBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jRCCourseComboBoxActionPerformed
+
+    private void jRCSectionComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRCSectionComboBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jRCSectionComboBoxActionPerformed
+
+    private void jRCSemesterComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jRCSemesterComboBoxItemStateChanged
+        jRCCourseComboBox.removeAllItems();
+        ArrayList<String> courses = db.getSemesterCourseList(db.getSemesterID(jRCSemesterComboBox.getSelectedItem().toString()));
+        for (int i = 0; i < courses.size(); i++) {
+            jRCCourseComboBox.addItem(courses.get(i));
+        }
+    }//GEN-LAST:event_jRCSemesterComboBoxItemStateChanged
+
+    private void jRCSectionComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jRCSectionComboBoxItemStateChanged
+
+    }//GEN-LAST:event_jRCSectionComboBoxItemStateChanged
+
+    private void jRCCourseComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jRCCourseComboBoxItemStateChanged
+        jRCSectionComboBox.removeAllItems();
+        ArrayList<String> time = (db.getCourseSectionList(db.getSemesterID(jRCSemesterComboBox.getSelectedItem().toString())));
+        for (int i = 0; i < time.size(); i++) {
+            jRCSectionComboBox.addItem(time.get(i));
+        }
+    }//GEN-LAST:event_jRCCourseComboBoxItemStateChanged
 
     /**
      * @param args the command line arguments
@@ -1628,6 +1965,8 @@ public class MainJFrame extends javax.swing.JFrame {
     private javax.swing.JPanel jAddDepartmentPanel;
     private javax.swing.JTextField jAddDepartmentTextField;
     private javax.swing.JPanel jAddInstructorPanel;
+    private javax.swing.JMenuItem jAddMajorMenuItem;
+    private javax.swing.JPanel jAddMajorPanel;
     private javax.swing.JMenu jAddMenu;
     private javax.swing.JButton jAddNationalityButton;
     private javax.swing.JMenuItem jAddNationalityMenuItem;
@@ -1694,12 +2033,21 @@ public class MainJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel30;
+    private javax.swing.JLabel jLabel31;
+    private javax.swing.JLabel jLabel32;
+    private javax.swing.JLabel jLabel33;
+    private javax.swing.JLabel jLabel34;
+    private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JButton jMajorAddButton;
+    private javax.swing.JButton jMajorClearButton;
+    private javax.swing.JComboBox jMajorDepartmentComboBox;
     private javax.swing.JMenuBar jMenuBar;
     private javax.swing.JTextField jMobileTextField;
     private javax.swing.JTextField jNationalityAbbTextField;
@@ -1707,14 +2055,25 @@ public class MainJFrame extends javax.swing.JFrame {
     private javax.swing.JTextField jNationalityNameTextField;
     private javax.swing.JPanel jPanel;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JButton jRCAddButton;
+    private javax.swing.JButton jRCClearButton;
+    private javax.swing.JComboBox jRCCourseComboBox;
+    private javax.swing.JComboBox jRCSectionComboBox;
+    private javax.swing.JComboBox jRCSemesterComboBox;
+    private javax.swing.JMenuItem jRegisterCourseMenuItem;
+    private javax.swing.JPanel jRegisterCoursePanel;
     private javax.swing.JTextField jRoomCapacityTextField;
     private javax.swing.JMenuItem jSemesterMenuItem;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JPopupMenu.Separator jSeparator2;
+    private javax.swing.JPopupMenu.Separator jSeparator3;
+    private javax.swing.JPopupMenu.Separator jSeparator4;
     private javax.swing.JComboBox jStartTimeHComboBox;
     private javax.swing.JComboBox jStartTimeMComboBox;
     private javax.swing.JMenu jStudentMenu;
     private javax.swing.JTextField jTextFieldFName;
+    private javax.swing.JTextField jTextFieldIMajorName;
+    private javax.swing.JTextField jTextFieldIRCStudentID;
     private javax.swing.JTextField jTextFieldInstructorFName;
     private javax.swing.JTextField jTextFieldInstructorLName;
     private javax.swing.JTextField jTextFieldInstructorMName;
