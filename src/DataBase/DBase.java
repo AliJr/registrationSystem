@@ -553,6 +553,5 @@ public class DBase {
         }
         return false;
     }
-    public void test(){}
 
 }
