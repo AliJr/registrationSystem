@@ -39,7 +39,7 @@ public class DBase {
             int studentID = rs.getInt(1) + 1;
             rs.close();
             stmt.close();
-            PreparedStatement st = conn.prepareStatement("insert into student(STUDENT_ID,STRUDENT_NAME,GENDER,MOBILE,"
+            PreparedStatement st = conn.prepareStatement("insert into student(STUDENT_ID,STUDENT_NAME,GENDER,MOBILE,"
                     + "BIRTH_DATE,DEPARTMENT_ID,NATIONALITY_ID) values(?,?,?,?,?,?,?)");
             st.setInt(1, studentID);
             st.setString(2, name);
@@ -145,6 +145,20 @@ public class DBase {
 
     }
 
+    public void addGrade(String grade, int courseID, int studentID) {
+        try {
+            PreparedStatement st = conn.prepareStatement("insert into STUDENT_RECORD(GRADE,COURSE_ID,STUDENT_ID) values(?,?,?)");
+            st.setString(1, grade);
+            st.setInt(2, courseID);
+            st.setInt(3, studentID);
+            st.executeUpdate();
+            st.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(DBase.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+
     public void addRoom(String buildingName, int capacity) {
         try {
             Statement stmt = conn.createStatement();
@@ -230,6 +244,27 @@ public class DBase {
 
     }
 
+    public void addMajor(String name, int departmentID) {
+        try {
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT COUNT(*)FROM MAJOR");
+            rs.next();
+            int majorID = rs.getInt(1) + 1;
+            rs.close();
+            stmt.close();
+            PreparedStatement st = conn.prepareStatement("insert into MAJOR(MAJOR_NAME,MAJOR_ID,DEPARTMENT_ID) values(?,?,?)");
+            st.setString(1, name);
+            st.setInt(2, majorID);
+            st.setInt(3, departmentID);
+            st.executeUpdate();
+            st.close();
+            rs.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(DBase.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+
     public void addPrerequisite(int prerequisiteID, int courseID) {
         try {
             PreparedStatement st = conn.prepareStatement("insert into PREREQUISITES(PREREQUISITE_ID,COURSE_ID) values(?,?)");
@@ -243,12 +278,24 @@ public class DBase {
 
     }
 
-    public void addStudentRecord(String grade, int courseID, int studentID) {
+    public void addStudentRecord(int courseID, int studentID) {
         try {
-            PreparedStatement st = conn.prepareStatement("insert into STUDENT_RECORD(GRADE,COURSE_ID,STUDENT_ID) values(?,?,?)");
-            st.setString(1, grade);
-            st.setInt(2, courseID);
-            st.setInt(3, studentID);
+            PreparedStatement st = conn.prepareStatement("insert into STUDENT_RECORD(COURSE_ID,STUDENT_ID) values(?,?)");
+            st.setInt(1, courseID);
+            st.setInt(2, studentID);
+            st.executeUpdate();
+            st.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(DBase.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+
+    public void addEnrolls(int sectionID, int studentID) {
+        try {
+            PreparedStatement st = conn.prepareStatement("insert into ENROLLS(SECTION_ID,STUDENT_ID) values(?,?)");
+            st.setInt(1, sectionID);
+            st.setInt(2, studentID);
             st.executeUpdate();
             st.close();
         } catch (SQLException ex) {
@@ -302,6 +349,56 @@ public class DBase {
             rs.close();
             stmt.close();
             return colleges;
+        } catch (SQLException ex) {
+            Logger.getLogger(DBase.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+
+    public ArrayList<String> getSemesterCourseList(int semesterID) {
+        try {
+            ArrayList<Integer> courseIDs = new ArrayList<>();
+            ArrayList<String> courseNames = new ArrayList<>();
+            PreparedStatement st = conn.prepareStatement("SELECT COURSE_ID FROM SECTION WHERE SEMESTER_ID=? GROUP BY COURSE_ID");
+            st.setInt(1, semesterID);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                courseIDs.add(rs.getInt(1));
+            }
+            rs.close();
+            st.close();
+            if (!courseIDs.isEmpty()) {
+                for (int i = 0; i < courseIDs.size(); i++) {
+                    st = conn.prepareStatement("SELECT COURSE_NAME FROM COURSE WHERE COURSE_ID=?");
+                    st.setInt(1, courseIDs.get(i));
+                    rs = st.executeQuery();
+                    while (rs.next()) {
+                        courseNames.add(rs.getString(1));
+                    }
+                }
+
+            }
+            rs.close();
+            st.close();
+            return courseNames;
+        } catch (SQLException ex) {
+            Logger.getLogger(DBase.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+
+    public ArrayList<String> getCourseSectionList(int courseID) {
+        try {
+            ArrayList<String> sectionTime = new ArrayList<>();
+            PreparedStatement st = conn.prepareStatement("SELECT TIME FROM SECTION WHERE COURSE_ID=?");
+            st.setInt(1, courseID);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                sectionTime.add(rs.getString(1));
+            }
+            rs.close();
+            st.close();
+            return sectionTime;
         } catch (SQLException ex) {
             Logger.getLogger(DBase.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -479,6 +576,24 @@ public class DBase {
         return 0;
     }
 
+    public int getSectionID(String sectionTime, int courseID) {
+        try {
+            PreparedStatement st = conn.prepareStatement("SELECT SECTION_ID FROM SECTION WHERE TIME=? AND COURSE_ID=?");
+            st.setString(1, sectionTime);
+            st.setInt(2, courseID);
+            ResultSet rs = st.executeQuery();
+            int temp;
+            rs.next();
+            temp = rs.getInt(1);
+            rs.close();
+            st.close();
+            return temp;
+        } catch (SQLException ex) {
+            Logger.getLogger(DBase.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return 0;
+    }
+
     public int getDepartmentIDFromCourse(int courseID) {
         try {
             PreparedStatement st = conn.prepareStatement("SELECT DEPARTMENT_ID FROM COURSE WHERE COURSE_ID=?");
@@ -537,7 +652,7 @@ public class DBase {
             st.setInt(1, roomID);
             ResultSet rs = st.executeQuery();
             int temp;
-            boolean check=true;
+            boolean check = true;
             rs.next();
             temp = rs.getInt(1);
             if (sectionCapacity <= temp) {
@@ -553,5 +668,95 @@ public class DBase {
         }
         return false;
     }
+    public void test(){}
 
+    public boolean canRegister(int courseID) {
+        try {
+            PreparedStatement st = conn.prepareStatement("SELECT GRADE FROM STUDENT_RECORD WHERE COURSE_ID=?");
+            st.setInt(1, courseID);
+            ResultSet rs = st.executeQuery();
+            String temp="";
+            boolean check = true;
+            if(!rs.next())
+            temp = rs.getString(1);
+            if (temp.equals('F') || temp.equals("D") || temp.equals("D+") || temp.isEmpty()) {
+                check = true;
+            } else {
+                check = false;
+}
+            rs.close();
+            st.close();
+            return check;
+        } catch (SQLException ex) {
+            Logger.getLogger(DBase.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
+
+    public boolean canAttend(int sectionID) {
+        try {
+            PreparedStatement st = conn.prepareStatement("SELECT AVAILABLE FROM SECTION WHERE SECTION_ID=?");
+            st.setInt(1, sectionID);
+            ResultSet rs = st.executeQuery();
+            int available;
+            boolean check = true;
+            rs.next();
+            available = rs.getInt(1);
+            rs.close();
+            st.close();
+            if (available > 0) {
+                return check;
+            } else {
+                return false;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(DBase.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
+
+    public boolean hasNoConflict(String time, int studentID) {
+        try {
+            PreparedStatement st = conn.prepareStatement("SELECT SECTION_ID FROM ENROLLS WHERE STUDENT_ID=?");
+            st.setInt(1, studentID);
+            ResultSet rs = st.executeQuery();
+            ArrayList<Integer> sections = new ArrayList<>();
+            ArrayList<String> times = new ArrayList<>();
+            while (rs.next()) {
+                sections.add(rs.getInt(1));
+            }
+            rs.close();
+            st.close();
+            for (int i = 0; i < sections.size(); i++) {
+                st = conn.prepareStatement("SELECT TIME FROM SECTION WHERE SECTION_ID=? GROUP BY TIME");
+                st.setInt(1, sections.get(i));
+                rs = st.executeQuery();
+                times.add(rs.getString(1));
+            }
+            String sectionTime[] = time.split("/");
+            DateFormat dateFormat = new SimpleDateFormat("hh:mm");
+            Date sectionStartTime = dateFormat.parse(sectionTime[0]);
+            Date sectionEndTime = dateFormat.parse(sectionTime[1]);
+            String sectionDays = sectionTime[2];
+            boolean check = true;
+            for (int i = 0; i < times.size(); i++) {
+                String tempTime[] = times.get(i).split("/");
+                Date tempStartTime = dateFormat.parse(sectionTime[0]);
+                Date tempEndTime = dateFormat.parse(sectionTime[1]);
+                String tempDays = sectionTime[2];
+                if (sectionDays.equals(tempDays)) {
+                    if (!(sectionStartTime.after(tempStartTime)) || sectionEndTime.before(tempEndTime)) {
+                        check = false;
+                    }
+                }
+            }
+            return check;
+
+        } catch (SQLException ex) {
+            Logger.getLogger(DBase.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ParseException ex) {
+            Logger.getLogger(DBase.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
 }
