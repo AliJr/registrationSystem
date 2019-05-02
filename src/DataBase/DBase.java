@@ -11,6 +11,8 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import javax.swing.table.DefaultTableModel;
+
 import org.graalvm.compiler.core.common.GraalBailoutException;
 
 import java.text.DateFormat;
@@ -377,31 +379,31 @@ public class DBase {
                     credits=credits+getCredit(names.get(i));
                     
                     
-                }else if(g.g.equals("B+")){
+                }else if(g.equals("B+")){
                     totalPoints=3.5*getCredit(names.get(i));
                     credits=credits+getCredit(names.get(i));
                 }
-                else if(g.g.equals("B")){
+                else if(g.equals("B")){
                     totalPoints=3*getCredit(names.get(i));
                     credits=credits+getCredit(names.get(i));
                 }
-                    else if(g.g.equals("C+")){
+                    else if(g.equals("C+")){
                         totalPoints=2.5*getCredit(names.get(i));
                     credits=credits+getCredit(names.get(i));
                     }
-                        else if(g.g.equals("C")){
+                        else if(g.equals("C")){
                             totalPoints=2*getCredit(names.get(i));
                             credits=credits+getCredit(names.get(i));
                         }
-                            else if(g.g.equals("D+")){
+                            else if(g.equals("D+")){
                                 totalPoints=1.5*getCredit(names.get(i));
                     credits=credits+getCredit(names.get(i));
                             }
-                                else if(g.g.equals("D")){
+                                else if(g.equals("D")){
                                     totalPoints=1*getCredit(names.get(i));
                                     credits=credits+getCredit(names.get(i));
                                 }
-                                    else if(g.g.equals("F")){
+                                    else if(g.equals("F")){
                                         totalPoints=0*getCredit(names.get(i));
                                         credits=credits+getCredit(names.get(i));
                                     }
@@ -487,7 +489,7 @@ public class DBase {
         }
         return null;
     }
-    public ArrayList<String>  courseTought_SectionNoOfStudents(int INSTRUCTOR_ID){
+        public ArrayList<String>  courseTought_SectionNoOfStudents(int INSTRUCTOR_ID){
         try {
             ArrayList<Integer> CAPACITY = new ArrayList<>();
             ArrayList<Integer> AVAILABLE = new ArrayList<>();
@@ -522,8 +524,31 @@ for (int i = 0 ; i>= CAPACITY.size();i++){
         }
         return null;
     }
+       /*
+    public void courseTought(int INSTRUCTOR_ID){
 
-     public ArrayList<String> getNationalityList() {
+
+        ArrayList<String> semesterName = courseTought_Csemester(INSTRUCTOR_ID);
+        ArrayList<String> coursesCodes = courseTought_Ccode(INSTRUCTOR_ID);
+        ArrayList<String> coursesNames = courseTought_CName(INSTRUCTOR_ID);
+        ArrayList<String> SECTIONID = courseTought_SectionID(INSTRUCTOR_ID);
+        ArrayList<Integer> numOfStudent = courseTought_SectionNoOfStudents(INSTRUCTOR_ID);
+       
+        Object courseToughtObject[] = new Object[5];
+        for (int i=0 ; i<= semesterName.size();i++){
+            courseToughtObject[0]=semesterName.get(i);
+            courseToughtObject[1]=coursesCodes.get(i);
+            courseToughtObject[2]=coursesNames.get(i);
+            courseToughtObject[3]=SECTIONID.get(i);
+            courseToughtObject[4]=numOfStudent.get(i);
+
+
+        }
+       
+
+ } 
+ */
+    public ArrayList<String> getNationalityList() {
         try {
             ArrayList<String> nationalities = new ArrayList<>();
             Statement stmt = conn.createStatement();
