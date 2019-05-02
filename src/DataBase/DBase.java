@@ -10,6 +10,9 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import org.graalvm.compiler.core.common.GraalBailoutException;
+
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.util.Date;
@@ -303,6 +306,121 @@ public class DBase {
         }
 
     }
+   
+    public ArrayList<String> getStudetRecord(int STUDENT_ID){
+        try {
+            ArrayList<String> courses = new ArrayList<>();
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT COURSE_NAME FROM COUSRE WHERE COURSE_ID =(SELECT COURSE_NAME FROM COUSRE WHERE COURSE_ID FROM STUDENT_RECORD WHERE STUDENT_ID=?)");
+            while (rs.next()) {
+               
+                courses.add(rs.getString(1));
+            }
+            rs.close();
+            stmt.close();
+            return courses;
+        } catch (SQLException ex) {
+            Logger.getLogger(DBase.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+
+    }
+
+     public ArrayList<String> getStudentGrades(int STUDENT_ID){
+        try {
+            ArrayList<String> Grades = new ArrayList<>();
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT GRADE FROM STUDENT_RECORD WHERE STUDENT_ID=?)");
+            while (rs.next()) {
+                
+                Grades.add(rs.getString(1));
+            }
+            rs.close();
+            stmt.close();
+            return Grades;
+        } catch (SQLException ex) {
+            Logger.getLogger(DBase.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+ 
+     }
+     
+     private int getCredit(String COURSE_NAME){
+        try {
+            PreparedStatement st = conn.prepareStatement("SELECT CREDIT FROM COURSE WHERE COURSE_NAME=?");
+            st.setString(1, COURSE_NAME);
+            ResultSet rs = st.executeQuery();
+            int temp;
+            rs.next();
+            temp = rs.getInt(1);
+            rs.close();
+            st.close();
+            return temp;
+        } catch (SQLException ex) {
+            Logger.getLogger(DBase.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+     }
+
+     private double getGPA(int STUDENT_ID){
+        try {
+            ArrayList<String> Grades = getStudentGrades(STUDENT_ID);
+            ArrayList<String> names = getStudetRecord(STUDENT_ID);
+            int credits = 0;
+            double totalPoints=0;
+            double GPA = 0;
+            for(int i=0;i>=Grades.size();i++){
+                String g = Grades.get(i);
+                if(g.equals("A"))
+                {
+                    totalPoints=4*getCredit(names.get(i));
+                    credits=credits+getCredit(names.get(i));
+                    
+                    
+                }else if(g.g.equals("B+")){
+                    totalPoints=3.5*getCredit(names.get(i));
+                    credits=credits+getCredit(names.get(i));
+                }
+                else if(g.g.equals("B")){
+                    totalPoints=3*getCredit(names.get(i));
+                    credits=credits+getCredit(names.get(i));
+                }
+                    else if(g.g.equals("C+")){
+                        totalPoints=2.5*getCredit(names.get(i));
+                    credits=credits+getCredit(names.get(i));
+                    }
+                        else if(g.g.equals("C")){
+                            totalPoints=2*getCredit(names.get(i));
+                            credits=credits+getCredit(names.get(i));
+                        }
+                            else if(g.g.equals("D+")){
+                                totalPoints=1.5*getCredit(names.get(i));
+                    credits=credits+getCredit(names.get(i));
+                            }
+                                else if(g.g.equals("D")){
+                                    totalPoints=1*getCredit(names.get(i));
+                                    credits=credits+getCredit(names.get(i));
+                                }
+                                    else if(g.g.equals("F")){
+                                        totalPoints=0*getCredit(names.get(i));
+                                        credits=credits+getCredit(names.get(i));
+                                    }
+            }
+
+            Double temp = totalPoints/credits;
+         
+
+            
+            return temp;
+        } catch (SQLException ex) {
+           
+        }
+        return null;
+ 
+     }
+
+     
+    
 
     public ArrayList<String> getNationalityList() {
         try {
