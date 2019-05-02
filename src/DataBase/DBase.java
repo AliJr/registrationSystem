@@ -415,7 +415,7 @@ public class DBase {
             
             return temp;
         } catch (SQLException ex) {
-           
+            Logger.getLogger(DBase.class.getName()).log(Level.SEVERE, null, ex);
         }
         return 0;
  
