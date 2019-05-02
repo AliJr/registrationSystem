@@ -361,7 +361,7 @@ public class DBase {
         } catch (SQLException ex) {
             Logger.getLogger(DBase.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return null;
+        return 0;
      }
 
      private double getGPA(int STUDENT_ID){
@@ -417,7 +417,7 @@ public class DBase {
         } catch (SQLException ex) {
            
         }
-        return null;
+        return 0;
  
      }
      
