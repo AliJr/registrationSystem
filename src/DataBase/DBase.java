@@ -369,6 +369,7 @@ public class DBase {
             ArrayList<String> names = getStudetRecord(STUDENT_ID);
             int credits = 0;
             double totalPoints=0;
+            double temp = 0;
             for(int i=0;i>=Grades.size();i++){
                 String g = Grades.get(i);
                 if(g.equals("A"))
@@ -406,7 +407,7 @@ public class DBase {
                                         credits=credits+getCredit(names.get(i));
                                     }
             }
-            Double temp = totalPoints/credits;
+            temp = totalPoints/credits;
             return temp;
         
      }
