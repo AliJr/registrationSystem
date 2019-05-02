@@ -13,7 +13,7 @@ import java.util.logging.Logger;
 
 import javax.swing.table.DefaultTableModel;
 
-import org.graalvm.compiler.core.common.GraalBailoutException;
+//import org.graalvm.compiler.core.common.GraalBailoutException;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -363,14 +363,12 @@ public class DBase {
         }
         return 0;
      }
-
      private double getGPA(int STUDENT_ID){
          
             ArrayList<String> Grades = getStudentGrades(STUDENT_ID);
             ArrayList<String> names = getStudetRecord(STUDENT_ID);
             int credits = 0;
             double totalPoints=0;
-            double GPA = 0;
             for(int i=0;i>=Grades.size();i++){
                 String g = Grades.get(i);
                 if(g.equals("A"))
@@ -408,15 +406,24 @@ public class DBase {
                                         credits=credits+getCredit(names.get(i));
                                     }
             }
-
             Double temp = totalPoints/credits;
-         
-
-            
             return temp;
         
      }
-     
+       /*     
+    public void Transcript(int STUDENT_ID){
+
+        ArrayList<String> courses = getStudetRecord(STUDENT_ID);
+        ArrayList<String> Grades = getStudentGrades(STUDENT_ID);
+
+        Object Transcript[] = new Object[2];
+
+        for (int i=0 ; i<= courses.size();i++){
+            Transcript[0]=courses.get(i);
+            Transcript[1]=Grades.get(i);
+        }
+ }
+ */
      public ArrayList<String> courseTought_Csemester(int INSTRUCTOR_ID){
         try {
             ArrayList<String> semesterName = new ArrayList<>();
@@ -523,7 +530,6 @@ for (int i = 0 ; i>= CAPACITY.size();i++){
        /*
     public void courseTought(int INSTRUCTOR_ID){
 
-
         ArrayList<String> semesterName = courseTought_Csemester(INSTRUCTOR_ID);
         ArrayList<String> coursesCodes = courseTought_Ccode(INSTRUCTOR_ID);
         ArrayList<String> coursesNames = courseTought_CName(INSTRUCTOR_ID);
@@ -531,6 +537,7 @@ for (int i = 0 ; i>= CAPACITY.size();i++){
         ArrayList<Integer> numOfStudent = courseTought_SectionNoOfStudents(INSTRUCTOR_ID);
        
         Object courseToughtObject[] = new Object[5];
+
         for (int i=0 ; i<= semesterName.size();i++){
             courseToughtObject[0]=semesterName.get(i);
             courseToughtObject[1]=coursesCodes.get(i);
