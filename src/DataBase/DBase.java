@@ -311,7 +311,7 @@ public class DBase {
         try {
             ArrayList<String> courses = new ArrayList<>();
             Statement stmt = conn.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT COURSE_NAME FROM COUSRE WHERE COURSE_ID =(SELECT COURSE_NAME FROM COUSRE WHERE COURSE_ID FROM STUDENT_RECORD WHERE STUDENT_ID=?)");
+            ResultSet rs = stmt.executeQuery("SELECT COURSE_NAME FROM COUSRE WHERE COURSE_ID =(SELECT COURSE_ID FROM STUDENT_RECORD WHERE STUDENT_ID=?)");
             while (rs.next()) {
                
                 courses.add(rs.getString(1));
@@ -418,11 +418,112 @@ public class DBase {
         return null;
  
      }
-
      
-    
+     public ArrayList<String> courseTought_Csemester(int INSTRUCTOR_ID){
+        try {
+            ArrayList<String> semesterName = new ArrayList<>();
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT SEMESTER_NAME FROM SEMESTER WHERE SEMESTER_ID =(SELECT SEMESTER_ID FROM SECTION WHERE NSTRUCTOR_ID=?)");
+            while (rs.next()) {
+               
+                semesterName.add(rs.getString(1));
+            }
+            rs.close();
+            stmt.close();
+            return semesterName;
+        } catch (SQLException ex) {
+            Logger.getLogger(DBase.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+     }
+     public ArrayList<String> courseTought_Ccode(int INSTRUCTOR_ID){
+        try {
+            ArrayList<String> coursesCodes = new ArrayList<>();
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT COUSRE_ID FROM SECTION WHERE NSTRUCTOR_ID=?");
+            while (rs.next()) {
+               
+                coursesCodes.add(rs.getString(1));
+            }
+            rs.close();
+            stmt.close();
+            return coursesCodes;
+        } catch (SQLException ex) {
+            Logger.getLogger(DBase.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+     }
+     public ArrayList<String> courseTought_CName(int INSTRUCTOR_ID){
+        try {
+            ArrayList<String> coursesNames = new ArrayList<>();
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT COURSE_NAME FROM COUSRE WHERE COURSE_ID =(SELECT COUSRE_ID FROM SECTION WHERE NSTRUCTOR_ID=?)");
+            while (rs.next()) {
+               
+                coursesNames.add(rs.getString(1));
+            }
+            rs.close();
+            stmt.close();
+            return coursesNames;
+        } catch (SQLException ex) {
+            Logger.getLogger(DBase.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+     }
+     public ArrayList<String> courseTought_SectionID(int INSTRUCTOR_ID){
+        try {
+            ArrayList<String> SECTIONID = new ArrayList<>();
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT SECTION_ID FROM SECTION WHERE NSTRUCTOR_ID=?");
+            while (rs.next()) {
+               
+                SECTIONID.add(rs.getString(1));
+            }
+            rs.close();
+            stmt.close();
+            return SECTIONID;
+        } catch (SQLException ex) {
+            Logger.getLogger(DBase.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+    public ArrayList<String>  courseTought_SectionNoOfStudents(int INSTRUCTOR_ID){
+        try {
+            ArrayList<Integer> CAPACITY = new ArrayList<>();
+            ArrayList<Integer> AVAILABLE = new ArrayList<>();
+            ArrayList<Integer> numOfStudent = new ArrayList<>();
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT CAPACITY FROM SECTION WHERE NSTRUCTOR_ID=?");
+            while (rs.next()) {
+               
+                CAPACITY.add(rs.getInt(1));
+            }
+            rs.close();
+            
 
-    public ArrayList<String> getNationalityList() {
+           
+            rs = stmt.executeQuery("SELECT AVAILABLE FROM SECTION WHERE NSTRUCTOR_ID=?");
+            while (rs.next()) {
+               
+                AVAILABLE.add(rs.getInt(1));
+            }
+            rs.close();
+            stmt.close();
+
+
+for (int i = 0 ; i>= CAPACITY.size();i++){
+    numOfStudent.add(CAPACITY.get(i)-AVAILABLE.get(i));
+
+}
+
+           
+        } catch (SQLException ex) {
+            Logger.getLogger(DBase.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+
+     public ArrayList<String> getNationalityList() {
         try {
             ArrayList<String> nationalities = new ArrayList<>();
             Statement stmt = conn.createStatement();
