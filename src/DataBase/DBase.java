@@ -365,7 +365,7 @@ public class DBase {
      }
 
      private double getGPA(int STUDENT_ID){
-        try {
+         
             ArrayList<String> Grades = getStudentGrades(STUDENT_ID);
             ArrayList<String> names = getStudetRecord(STUDENT_ID);
             int credits = 0;
@@ -414,11 +414,7 @@ public class DBase {
 
             
             return temp;
-        } catch (SQLException ex) {
-            Logger.getLogger(DBase.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return 0;
- 
+        
      }
      
      public ArrayList<String> courseTought_Csemester(int INSTRUCTOR_ID){
