@@ -28,18 +28,18 @@ import java.awt.event.ActionEvent;
  *
  * @author mr ali
  */
-public class MainJFrame extends javax.swing.JFrame {
+public class test extends javax.swing.JFrame {
 
     DBase db;
     
     /**
      * Creates new form MainJFrame
      */
-    public MainJFrame() {
+    public test() {
         initComponents();
     }
 
-    public MainJFrame(DBase db) {
+    public test(DBase db) {
         initComponents();
         this.db = db;
     }
